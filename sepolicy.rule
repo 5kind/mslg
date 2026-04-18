@@ -1,0 +1,653 @@
+type mslg_app
+type mslg_app_30
+type mslg_app_devpts
+type mslg_app_userfaultfd
+type mslg_init
+type mslg_init_exec
+type mslg_rootfs_file
+type mslgd
+type mslgd_exec
+type userfaultfd
+type vendor_mslg_prop
+typeattribute { mslg_app mslgd } socket_between_core_and_vendor_violators
+typeattribute { mslg_app } appdomain
+typeattribute { mslg_app } bluetoothdomain
+typeattribute { mslg_app } coredomain
+typeattribute { mslg_app } netdomain
+typeattribute { mslg_app_devpts } fs_type
+typeattribute { mslg_init mslgd } mlstrustedsubject
+typeattribute { mslg_init_exec mslg_rootfs_file mslgd_exec } file_type
+typeattribute { mslg_init_exec mslgd_exec } exec_type
+typeattribute { mslg_init_exec mslgd_exec } vendor_file_type
+typeattribute { mslg_rootfs_file } data_file_type
+typeattribute { mslg_rootfs_file } mlstrustedobject
+typeattribute { vendor_mslg_prop } property_type
+typeattribute { vendor_mslg_prop } vendor_property_type
+typeattribute { vendor_mslg_prop } vendor_public_property_type
+allow fuse labeledfs filesystem { associate }
+allow init mnt_user_file lnk_file { getattr read }
+allow init mslg_init process { rlimitinh siginh transition }
+allow init mslg_init_exec file { execute getattr map open read }
+allow init mslg_rootfs_file dir { mounton }
+allow init mslg_rootfs_file file { mounton }
+allow init mslgd process { noatsecure rlimitinh siginh transition }
+allow init mslgd_exec file { execute getattr map open read }
+allow kernel mslg_rootfs_file file { read }
+allow kernel mslgd fd { use }
+allow mslg_init mslg_init process *
+allow mslg_init mslg_init_exec file { entrypoint execute getattr map open read }
+allow mslg_init_exec mslg_init_exec process *
+allow mslg_rootfs_file mslg_app process *
+allow mslgd adb_data_file dir { add_name create read search write }
+allow mslgd adb_data_file file { create open read write }
+allow mslgd adbd dir { search }
+allow mslgd adbd file { getattr open read }
+allow mslgd airoha_anld dir { search }
+allow mslgd airoha_anld file { open read }
+allow mslgd airoha_gnss_hal dir { search }
+allow mslgd airoha_gnss_hal file { getattr open read }
+allow mslgd airoha_gnss_hal lnk_file { read }
+allow mslgd audioserver dir { search }
+allow mslgd audioserver file { open read }
+allow mslgd batterysecret dir { search }
+allow mslgd batterysecret file { getattr open read }
+allow mslgd batterysecret lnk_file { read }
+allow mslgd block_device dir { getattr ioctl lock open read search watch watch_reads }
+allow mslgd bluetooth dir { search }
+allow mslgd bluetooth file { getattr open read }
+allow mslgd bluetooth lnk_file { read }
+allow mslgd cameraserver dir { search }
+allow mslgd cameraserver file { getattr open read }
+allow mslgd cameraserver lnk_file { read }
+allow mslgd charge_logger dir { search }
+allow mslgd charge_logger file { getattr open read }
+allow mslgd charge_logger lnk_file { read }
+allow mslgd checknv dir { search }
+allow mslgd checknv file { read }
+allow mslgd credstore dir { search }
+allow mslgd credstore file { getattr open read }
+allow mslgd credstore lnk_file { read }
+allow mslgd device dir { add_name read relabelfrom remove_name write }
+allow mslgd device file { create getattr ioctl map open read unlink write }
+allow mslgd device sock_file { create setattr unlink }
+allow mslgd displaycount dir { search }
+allow mslgd displaycount file { getattr open read }
+allow mslgd displaycount lnk_file { read }
+allow mslgd displayfeature dir { search }
+allow mslgd displayfeature file { getattr open read }
+allow mslgd displayfeature lnk_file { read }
+allow mslgd drmserver dir { search }
+allow mslgd drmserver file { getattr open read }
+allow mslgd drmserver lnk_file { read }
+allow mslgd fdpp dir { search }
+allow mslgd fdpp file { getattr open read }
+allow mslgd fdpp lnk_file { read }
+allow mslgd fuse dir { add_name create getattr ioctl lock open read remove_name rename reparent rmdir search setattr watch watch_reads write }
+allow mslgd fuse file { append create getattr ioctl link lock map open read rename setattr unlink watch watch_reads write }
+allow mslgd gatekeeperd file { read }
+allow mslgd gpuservice dir { search }
+allow mslgd gpuservice file { getattr open read }
+allow mslgd gpuservice lnk_file { read }
+allow mslgd hal_allocator_default dir { search }
+allow mslgd hal_allocator_default file { getattr open read }
+allow mslgd hal_allocator_default lnk_file { read }
+allow mslgd hal_antdtx_default dir { search }
+allow mslgd hal_antdtx_default file { getattr open read }
+allow mslgd hal_antdtx_default lnk_file { read }
+allow mslgd hal_atrace_default dir { search }
+allow mslgd hal_atrace_default file { getattr open read }
+allow mslgd hal_atrace_default lnk_file { read }
+allow mslgd hal_audio_default dir { search }
+allow mslgd hal_audio_default file { getattr open read }
+allow mslgd hal_audio_default lnk_file { read }
+allow mslgd hal_bluetooth_default dir { search }
+allow mslgd hal_bluetooth_default file { getattr open read }
+allow mslgd hal_bluetooth_default lnk_file { read }
+allow mslgd hal_bootctl_default dir { search }
+allow mslgd hal_bootctl_default file { getattr open read }
+allow mslgd hal_bootctl_default lnk_file { read }
+allow mslgd hal_camera_default dir { search }
+allow mslgd hal_camera_default file { getattr open read }
+allow mslgd hal_camera_default lnk_file { read }
+allow mslgd hal_cas_default dir { search }
+allow mslgd hal_cas_default file { getattr open read }
+allow mslgd hal_cas_default lnk_file { read }
+allow mslgd hal_cit_bluetooth_default dir { search }
+allow mslgd hal_cit_bluetooth_default file { open read }
+allow mslgd hal_cit_wifi_default dir { search }
+allow mslgd hal_cit_wifi_default file { read }
+allow mslgd hal_citvendorservice_default dir { search }
+allow mslgd hal_citvendorservice_default file { getattr open read }
+allow mslgd hal_citvendorservice_default lnk_file { read }
+allow mslgd hal_displayfeature_xiaomi_default dir { search }
+allow mslgd hal_displayfeature_xiaomi_default file { getattr open read }
+allow mslgd hal_displayfeature_xiaomi_default lnk_file { read }
+allow mslgd hal_dms_default dir { search }
+allow mslgd hal_dms_default file { getattr open read }
+allow mslgd hal_dms_default lnk_file { read }
+allow mslgd hal_dumpstate_impl dir { search }
+allow mslgd hal_dumpstate_impl file { getattr open read }
+allow mslgd hal_dumpstate_impl lnk_file { read }
+allow mslgd hal_eid_default dir { search }
+allow mslgd hal_eid_default file { getattr open read }
+allow mslgd hal_eid_default lnk_file { read }
+allow mslgd hal_fingerprint_default dir { search }
+allow mslgd hal_fingerprint_default file { read }
+allow mslgd hal_graphics_allocator_default dir { search }
+allow mslgd hal_graphics_allocator_default file { getattr open read }
+allow mslgd hal_graphics_allocator_default lnk_file { read }
+allow mslgd hal_graphics_composer_default dir { search }
+allow mslgd hal_graphics_composer_default file { getattr open read }
+allow mslgd hal_graphics_composer_default lnk_file { read }
+allow mslgd hal_health_default dir { search }
+allow mslgd hal_health_default file { getattr open read }
+allow mslgd hal_health_default lnk_file { read }
+allow mslgd hal_light_default dir { search }
+allow mslgd hal_light_default file { getattr open read }
+allow mslgd hal_light_default lnk_file { read }
+allow mslgd hal_memtrack_default dir { search }
+allow mslgd hal_memtrack_default file { getattr open read }
+allow mslgd hal_memtrack_default lnk_file { read }
+allow mslgd hal_mfidoca_default dir { search }
+allow mslgd hal_mfidoca_default file { getattr open read }
+allow mslgd hal_mfidoca_default lnk_file { read }
+allow mslgd hal_micharge_default dir { search }
+allow mslgd hal_micharge_default file { getattr open read }
+allow mslgd hal_micharge_default lnk_file { read }
+allow mslgd hal_midevauth_default dir { search }
+allow mslgd hal_midevauth_default file { getattr open read }
+allow mslgd hal_midevauth_default lnk_file { read }
+allow mslgd hal_mimd_default dir { search }
+allow mslgd hal_mimd_default file { getattr open read }
+allow mslgd hal_mimd_default lnk_file { read }
+allow mslgd hal_mioob_default dir { search }
+allow mslgd hal_mioob_default file { getattr open read }
+allow mslgd hal_mioob_default lnk_file { read }
+allow mslgd hal_misys_default dir { search }
+allow mslgd hal_misys_default file { getattr open read }
+allow mslgd hal_misys_default lnk_file { read }
+allow mslgd hal_mlipay_default dir { search }
+allow mslgd hal_mlipay_default file { getattr open read }
+allow mslgd hal_mlipay_default lnk_file { read }
+allow mslgd hal_mtdservice_default dir { search }
+allow mslgd hal_mtdservice_default file { getattr open read }
+allow mslgd hal_mtdservice_default lnk_file { read }
+allow mslgd hal_otrpagent_default dir { search }
+allow mslgd hal_otrpagent_default file { getattr open read }
+allow mslgd hal_otrpagent_default lnk_file { read }
+allow mslgd hal_power_default dir { search }
+allow mslgd hal_power_default file { getattr open read }
+allow mslgd hal_power_default lnk_file { read }
+allow mslgd hal_sensors_default dir { search }
+allow mslgd hal_sensors_default file { getattr open read }
+allow mslgd hal_sensors_default lnk_file { read }
+allow mslgd hal_slaservice_qti dir { search }
+allow mslgd hal_slaservice_qti file { getattr open read }
+allow mslgd hal_slaservice_qti lnk_file { read }
+allow mslgd hal_tetheroffload_default dir { search }
+allow mslgd hal_tetheroffload_default file { getattr open read }
+allow mslgd hal_tetheroffload_default lnk_file { read }
+allow mslgd hal_thermal_default dir { search }
+allow mslgd hal_thermal_default file { getattr open read }
+allow mslgd hal_thermal_default lnk_file { read }
+allow mslgd hal_tidaservice_default dir { search }
+allow mslgd hal_tidaservice_default file { getattr open read }
+allow mslgd hal_tidaservice_default lnk_file { read }
+allow mslgd hal_touchfeature_xiaomi_default dir { search }
+allow mslgd hal_touchfeature_xiaomi_default file { getattr open read }
+allow mslgd hal_touchfeature_xiaomi_default lnk_file { read }
+allow mslgd hal_vsimapp_default dir { search }
+allow mslgd hal_vsimapp_default file { getattr open read }
+allow mslgd hal_vsimapp_default lnk_file { read }
+allow mslgd hal_wifi_default dir { search }
+allow mslgd hal_wifi_default file { getattr open read }
+allow mslgd hal_wifi_default lnk_file { read }
+allow mslgd hal_wifi_supplicant_default dir { search }
+allow mslgd hal_wifi_supplicant_default file { getattr open read }
+allow mslgd hal_wifi_supplicant_default lnk_file { read }
+allow mslgd hwservicemanager dir { search }
+allow mslgd hwservicemanager file { getattr open read }
+allow mslgd hwservicemanager lnk_file { read }
+allow mslgd idmap file { read }
+allow mslgd incidentd dir { search }
+allow mslgd incidentd file { getattr open read }
+allow mslgd incidentd lnk_file { read }
+allow mslgd init dir { search }
+allow mslgd init file { getattr open read }
+allow mslgd init lnk_file { read }
+allow mslgd init unix_stream_socket { connectto }
+allow mslgd installd dir { search }
+allow mslgd installd file { getattr open read }
+allow mslgd installd lnk_file { read }
+allow mslgd joyose_app dir { search }
+allow mslgd joyose_app file { getattr open read }
+allow mslgd joyose_app lnk_file { read }
+allow mslgd kernel dir { search }
+allow mslgd kernel file { getattr open read }
+allow mslgd kernel key { link }
+allow mslgd kernel lnk_file { read }
+allow mslgd kernellog dir { search }
+allow mslgd kernellog file { read }
+allow mslgd keystore dir { search }
+allow mslgd keystore file { getattr open read }
+allow mslgd keystore lnk_file { read }
+allow mslgd lmkd dir { search }
+allow mslgd lmkd file { getattr open read }
+allow mslgd lmkd lnk_file { read }
+allow mslgd logd dir { search }
+allow mslgd logd file { getattr open read }
+allow mslgd logd lnk_file { read }
+allow mslgd loop_control_device chr_file { ioctl open read write }
+allow mslgd loop_device blk_file { append getattr ioctl lock map open read watch watch_reads write }
+allow mslgd magisk dir { search }
+allow mslgd magisk file { getattr open read }
+allow mslgd magisk lnk_file { read }
+allow mslgd mcd dir { search }
+allow mslgd mcd file { getattr open read }
+allow mslgd mcd lnk_file { read }
+allow mslgd mdnsd dir { search }
+allow mslgd mdnsd file { getattr open read }
+allow mslgd mdnsd lnk_file { read }
+allow mslgd mediacodec dir { search }
+allow mslgd mediacodec file { getattr open read }
+allow mslgd mediacodec lnk_file { read }
+allow mslgd mediaextractor dir { search }
+allow mslgd mediaextractor file { getattr open read }
+allow mslgd mediaextractor lnk_file { read }
+allow mslgd mediametrics dir { search }
+allow mslgd mediametrics file { getattr open read }
+allow mslgd mediametrics lnk_file { read }
+allow mslgd mediaprovider dir { search }
+allow mslgd mediaprovider file { getattr open read }
+allow mslgd mediaprovider lnk_file { read }
+allow mslgd mediaprovider_app dir { search }
+allow mslgd mediaprovider_app file { getattr open read }
+allow mslgd mediaprovider_app lnk_file { read }
+allow mslgd mediaserver dir { search }
+allow mslgd mediaserver file { getattr ioctl lock map open read watch watch_reads }
+allow mslgd mediaserver lnk_file { read }
+allow mslgd mediaswcodec dir { search }
+allow mslgd mediaswcodec file { getattr open read }
+allow mslgd mediaswcodec lnk_file { read }
+allow mslgd mi_ric dir { search }
+allow mslgd mi_ric file { getattr open read }
+allow mslgd mi_ric lnk_file { read }
+allow mslgd mi_thermald dir { search }
+allow mslgd mi_thermald file { getattr open read }
+allow mslgd mi_thermald lnk_file { read }
+allow mslgd millet dir { search }
+allow mslgd millet file { getattr open read }
+allow mslgd millet lnk_file { read }
+allow mslgd misight dir { search }
+allow mslgd misight file { getattr open read }
+allow mslgd misight lnk_file { read }
+allow mslgd miuibooster dir { search }
+allow mslgd miuibooster file { getattr open read }
+allow mslgd miuibooster lnk_file { read }
+allow mslgd mqsasd dir { search }
+allow mslgd mqsasd file { getattr open read }
+allow mslgd mqsasd lnk_file { read }
+allow mslgd mslg_rootfs_file dir { add_name create getattr open read relabelto remove_name rename reparent rmdir search setattr watch write }
+allow mslgd mslg_rootfs_file fifo_file { create open read unlink write }
+allow mslgd mslg_rootfs_file file { append create getattr ioctl link lock map open read rename setattr unlink watch write }
+allow mslgd mslg_rootfs_file lnk_file { create getattr link read rename setattr unlink }
+allow mslgd mslg_rootfs_file sock_file { create getattr rename setattr unlink write }
+allow mslgd mslgd capability { audit_write chown dac_override fowner fsetid kill setgid setpcap setuid sys_admin sys_chroot sys_nice sys_ptrace sys_resource }
+allow mslgd mslgd dir { add_name create getattr ioctl lock open read remove_name rename reparent rmdir search setattr watch watch_reads write }
+allow mslgd mslgd fifo_file { getattr read write }
+allow mslgd mslgd file { getattr open read write }
+allow mslgd mslgd key { search write }
+allow mslgd mslgd lnk_file { getattr read }
+allow mslgd mslgd netlink_audit_socket { create nlmsg_relay read write }
+allow mslgd mslgd netlink_kobject_uevent_socket { bind create getattr setopt }
+allow mslgd mslgd netlink_route_socket { bind create getattr ioctl nlmsg_read nlmsg_readpriv read setopt write }
+allow mslgd mslgd process { execmem fork getcap getsched setcap setexec setrlimit setsched sigkill signal signull }
+allow mslgd mslgd tcp_socket { accept bind connect create getattr getopt ioctl listen name_connect read setopt shutdown write }
+allow mslgd mslgd udp_socket { bind connect create getattr ioctl read setopt write }
+allow mslgd mslgd unix_dgram_socket { connect create write }
+allow mslgd mslgd unix_stream_socket { accept bind connect connectto create getattr getopt listen read setopt shutdown write }
+allow mslgd mslgd_exec dir { add_name getattr open read remove_name search }
+allow mslgd mslgd_exec file { entrypoint execute execute_no_trans getattr ioctl lock map open read }
+allow mslgd mslgd_exec lnk_file { getattr read }
+allow mslgd netd dir { search }
+allow mslgd netd file { getattr open read }
+allow mslgd netd lnk_file { read }
+allow mslgd node tcp_socket { node_bind }
+allow mslgd permissioncontroller_app dir { search }
+allow mslgd permissioncontroller_app file { getattr open read }
+allow mslgd permissioncontroller_app lnk_file { read }
+allow mslgd platform_app dir { search }
+allow mslgd platform_app file { getattr open read }
+allow mslgd platform_app lnk_file { read }
+allow mslgd platform_app process { signull }
+allow mslgd port tcp_socket { name_bind name_connect }
+allow mslgd priv_app dir { search }
+allow mslgd priv_app file { getattr open read }
+allow mslgd priv_app lnk_file { read }
+allow mslgd priv_app process { signull }
+allow mslgd proc file { getattr ioctl lock map open read watch watch_reads }
+allow mslgd proc_cmdline file { open read }
+allow mslgd proc_filesystems file { getattr open read }
+allow mslgd proc_stat file { getattr open read }
+allow mslgd property_socket sock_file { write }
+allow mslgd qadaemon dir { search }
+allow mslgd qadaemon file { open read }
+allow mslgd radio dir { search }
+allow mslgd radio file { getattr open read }
+allow mslgd radio lnk_file { read }
+allow mslgd secure_element dir { search }
+allow mslgd secure_element file { getattr open read }
+allow mslgd secure_element lnk_file { read }
+allow mslgd servicemanager dir { search }
+allow mslgd servicemanager file { getattr open read }
+allow mslgd servicemanager lnk_file { read }
+allow mslgd shell dir { search }
+allow mslgd shell file { getattr open read }
+allow mslgd shell lnk_file { read }
+allow mslgd shelld dir { search }
+allow mslgd shelld file { getattr open read }
+allow mslgd shelld lnk_file { read }
+allow mslgd statsd dir { search }
+allow mslgd statsd file { getattr open read }
+allow mslgd statsd lnk_file { read }
+allow mslgd storaged dir { search }
+allow mslgd storaged file { getattr open read }
+allow mslgd storaged lnk_file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write }
+allow mslgd su fd { use }
+allow mslgd su process { noatsecure rlimitinh siginh transition }
+allow mslgd su unix_stream_socket { accept setopt }
+allow mslgd surfaceflinger dir { search }
+allow mslgd surfaceflinger file { getattr open read }
+allow mslgd surfaceflinger lnk_file { read }
+allow mslgd sysfs dir { open read }
+allow mslgd sysfs file { getattr open read }
+allow mslgd system_app dir { search }
+allow mslgd system_app file { getattr open read }
+allow mslgd system_app lnk_file { read }
+allow mslgd system_app process { signull }
+allow mslgd system_data_file dir { add_name create getattr open read relabelfrom remove_name rmdir setattr write }
+allow mslgd system_data_file file { create getattr map open read rename setattr unlink write }
+allow mslgd system_data_file lnk_file { create read setattr unlink }
+allow mslgd system_data_file sock_file { getattr unlink }
+allow mslgd system_prop file { getattr map open read }
+allow mslgd system_server dir { search }
+allow mslgd system_server file { getattr open read }
+allow mslgd system_server lnk_file { read }
+allow mslgd system_suspend dir { search }
+allow mslgd system_suspend file { getattr open read }
+allow mslgd system_suspend lnk_file { read }
+allow mslgd tee dir { search }
+allow mslgd tee file { getattr open read }
+allow mslgd tee lnk_file { read }
+allow mslgd tmpfs chr_file { getattr ioctl open read setattr write }
+allow mslgd tmpfs dir { add_name create getattr ioctl lock open read remove_name rename reparent rmdir search setattr watch watch_reads write }
+allow mslgd tmpfs file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write }
+allow mslgd tmpfs lnk_file { read }
+allow mslgd tombstoned dir { search }
+allow mslgd tombstoned file { getattr open read }
+allow mslgd tombstoned lnk_file { read }
+allow mslgd tpevent dir { search }
+allow mslgd tpevent file { getattr open read }
+allow mslgd tpevent lnk_file { read }
+allow mslgd traced dir { search }
+allow mslgd traced file { getattr open read }
+allow mslgd traced lnk_file { read }
+allow mslgd traced_probes dir { search }
+allow mslgd traced_probes file { getattr open read }
+allow mslgd traced_probes lnk_file { read }
+allow mslgd traceur_app dir { search }
+allow mslgd traceur_app file { getattr open read }
+allow mslgd traceur_app lnk_file { read }
+allow mslgd ueventd dir { search }
+allow mslgd ueventd file { getattr open read }
+allow mslgd ueventd lnk_file { read }
+allow mslgd untrusted_app dir { search }
+allow mslgd untrusted_app file { getattr open read }
+allow mslgd untrusted_app lnk_file { read }
+allow mslgd untrusted_app process { signull }
+allow mslgd untrusted_app unix_dgram_socket { sendto }
+allow mslgd untrusted_app_30 dir { search }
+allow mslgd untrusted_app_30 file { getattr open read }
+allow mslgd untrusted_app_30 lnk_file { read }
+allow mslgd update_engine file { read }
+allow mslgd updater dir { search }
+allow mslgd updater file { getattr open read }
+allow mslgd updater lnk_file { read }
+allow mslgd vendor_adsprpcd dir { search }
+allow mslgd vendor_adsprpcd file { getattr open read }
+allow mslgd vendor_adsprpcd lnk_file { read }
+allow mslgd vendor_cdsprpcd dir { search }
+allow mslgd vendor_cdsprpcd file { getattr open read }
+allow mslgd vendor_cdsprpcd lnk_file { read }
+allow mslgd vendor_cnd dir { search }
+allow mslgd vendor_cnd file { getattr open read }
+allow mslgd vendor_cnd lnk_file { read }
+allow mslgd vendor_dataservice_app dir { search }
+allow mslgd vendor_dataservice_app file { getattr open read }
+allow mslgd vendor_dataservice_app lnk_file { read }
+allow mslgd vendor_default_prop file { getattr map open read }
+allow mslgd vendor_default_prop property_service { set }
+allow mslgd vendor_dpmd dir { search }
+allow mslgd vendor_dpmd file { getattr open read }
+allow mslgd vendor_dpmd lnk_file { read }
+allow mslgd vendor_dspservice dir { search }
+allow mslgd vendor_dspservice file { getattr open read }
+allow mslgd vendor_dspservice lnk_file { read }
+allow mslgd vendor_feature_enabler_client dir { search }
+allow mslgd vendor_feature_enabler_client file { getattr open read }
+allow mslgd vendor_feature_enabler_client lnk_file { read }
+allow mslgd vendor_file dir { read }
+allow mslgd vendor_file file { execute getattr ioctl map open read }
+allow mslgd vendor_hal_alarm_qti_default dir { search }
+allow mslgd vendor_hal_alarm_qti_default file { getattr open read }
+allow mslgd vendor_hal_alarm_qti_default lnk_file { read }
+allow mslgd vendor_hal_capabilityconfigstore_qti_default dir { search }
+allow mslgd vendor_hal_capabilityconfigstore_qti_default file { getattr open read }
+allow mslgd vendor_hal_capabilityconfigstore_qti_default lnk_file { read }
+allow mslgd vendor_hal_citsensorservice_xiaomi_default dir { search }
+allow mslgd vendor_hal_citsensorservice_xiaomi_default file { read }
+allow mslgd vendor_hal_display_color_default dir { search }
+allow mslgd vendor_hal_display_color_default file { getattr open read }
+allow mslgd vendor_hal_display_color_default lnk_file { read }
+allow mslgd vendor_hal_dpmQmiMgr dir { search }
+allow mslgd vendor_hal_dpmQmiMgr file { getattr open read }
+allow mslgd vendor_hal_dpmQmiMgr lnk_file { read }
+allow mslgd vendor_hal_drm_clearkey dir { search }
+allow mslgd vendor_hal_drm_clearkey file { getattr open read }
+allow mslgd vendor_hal_drm_clearkey lnk_file { read }
+allow mslgd vendor_hal_drm_widevine dir { search }
+allow mslgd vendor_hal_drm_widevine file { getattr open read }
+allow mslgd vendor_hal_drm_widevine lnk_file { read }
+allow mslgd vendor_hal_gatekeeper_qti dir { search }
+allow mslgd vendor_hal_gatekeeper_qti file { getattr open read }
+allow mslgd vendor_hal_gatekeeper_qti lnk_file { read }
+allow mslgd vendor_hal_imsrtp dir { search }
+allow mslgd vendor_hal_imsrtp file { getattr open read }
+allow mslgd vendor_hal_imsrtp lnk_file { read }
+allow mslgd vendor_hal_iop_default dir { search }
+allow mslgd vendor_hal_iop_default file { getattr open read }
+allow mslgd vendor_hal_iop_default lnk_file { read }
+allow mslgd vendor_hal_keymaster_qti dir { search }
+allow mslgd vendor_hal_keymaster_qti file { getattr open read }
+allow mslgd vendor_hal_keymaster_qti lnk_file { read }
+allow mslgd vendor_hal_limits_qti dir { search }
+allow mslgd vendor_hal_limits_qti file { getattr open read }
+allow mslgd vendor_hal_limits_qti lnk_file { read }
+allow mslgd vendor_hal_neuralnetworks_default dir { search }
+allow mslgd vendor_hal_neuralnetworks_default file { getattr open read }
+allow mslgd vendor_hal_neuralnetworks_default lnk_file { read }
+allow mslgd vendor_hal_perf_default dir { search }
+allow mslgd vendor_hal_perf_default file { getattr open read }
+allow mslgd vendor_hal_perf_default lnk_file { read }
+allow mslgd vendor_hal_qccvndhal_qti dir { search }
+allow mslgd vendor_hal_qccvndhal_qti file { getattr open read }
+allow mslgd vendor_hal_qccvndhal_qti lnk_file { read }
+allow mslgd vendor_hal_qseecom_default dir { search }
+allow mslgd vendor_hal_qseecom_default file { getattr open read }
+allow mslgd vendor_hal_qseecom_default lnk_file { read }
+allow mslgd vendor_hal_qspmhal_default dir { search }
+allow mslgd vendor_hal_qspmhal_default file { getattr open read }
+allow mslgd vendor_hal_qspmhal_default lnk_file { read }
+allow mslgd vendor_hal_qteeconnector_qti dir { search }
+allow mslgd vendor_hal_qteeconnector_qti file { getattr open read }
+allow mslgd vendor_hal_qteeconnector_qti lnk_file { read }
+allow mslgd vendor_hal_sensorcommunicate_default dir { search }
+allow mslgd vendor_hal_sensorcommunicate_default file { read }
+allow mslgd vendor_hal_sensorscalibrate_qti_default dir { search }
+allow mslgd vendor_hal_sensorscalibrate_qti_default file { getattr open read }
+allow mslgd vendor_hal_sensorscalibrate_qti_default lnk_file { read }
+allow mslgd vendor_hal_soter_qti dir { search }
+allow mslgd vendor_hal_soter_qti file { getattr open read }
+allow mslgd vendor_hal_soter_qti lnk_file { read }
+allow mslgd vendor_hal_srvctracker_default dir { search }
+allow mslgd vendor_hal_srvctracker_default file { getattr open read }
+allow mslgd vendor_hal_srvctracker_default lnk_file { read }
+allow mslgd vendor_hal_tui_comm_qti dir { search }
+allow mslgd vendor_hal_tui_comm_qti file { getattr open read }
+allow mslgd vendor_hal_tui_comm_qti lnk_file { read }
+allow mslgd vendor_hal_usb_qti dir { search }
+allow mslgd vendor_hal_usb_qti file { getattr open read }
+allow mslgd vendor_hal_usb_qti lnk_file { read }
+allow mslgd vendor_hvdcp dir { search }
+allow mslgd vendor_hvdcp file { getattr open read }
+allow mslgd vendor_hvdcp lnk_file { read }
+allow mslgd vendor_ims dir { search }
+allow mslgd vendor_ims file { getattr open read }
+allow mslgd vendor_ims lnk_file { read }
+allow mslgd vendor_init dir { search }
+allow mslgd vendor_init file { getattr open read }
+allow mslgd vendor_init lnk_file { read }
+allow mslgd vendor_keymasterd dir { search }
+allow mslgd vendor_keymasterd file { getattr open read }
+allow mslgd vendor_keymasterd lnk_file { read }
+allow mslgd vendor_location dir { search }
+allow mslgd vendor_location file { getattr open read }
+allow mslgd vendor_location lnk_file { read }
+allow mslgd vendor_location_app dir { search }
+allow mslgd vendor_location_app file { getattr open read }
+allow mslgd vendor_location_app lnk_file { read }
+allow mslgd vendor_mlid dir { search }
+allow mslgd vendor_mlid file { open read }
+allow mslgd vendor_msm_irqbalanced dir { search }
+allow mslgd vendor_msm_irqbalanced file { open read }
+allow mslgd vendor_pd_mapper dir { search }
+allow mslgd vendor_pd_mapper file { getattr open read }
+allow mslgd vendor_pd_mapper lnk_file { read }
+allow mslgd vendor_per_mgr dir { search }
+allow mslgd vendor_per_mgr file { getattr open read }
+allow mslgd vendor_per_mgr lnk_file { read }
+allow mslgd vendor_per_proxy dir { search }
+allow mslgd vendor_per_proxy file { getattr open read }
+allow mslgd vendor_per_proxy lnk_file { read }
+allow mslgd vendor_perfservice dir { search }
+allow mslgd vendor_perfservice file { open read }
+allow mslgd vendor_port-bridge dir { search }
+allow mslgd vendor_port-bridge file { getattr open read }
+allow mslgd vendor_port-bridge lnk_file { read }
+allow mslgd vendor_poweroffalarm_app dir { search }
+allow mslgd vendor_poweroffalarm_app file { getattr open read }
+allow mslgd vendor_poweroffalarm_app lnk_file { read }
+allow mslgd vendor_qcc_app dir { search }
+allow mslgd vendor_qcc_app file { getattr open read }
+allow mslgd vendor_qcc_app lnk_file { read }
+allow mslgd vendor_qccsyshal_qti dir { search }
+allow mslgd vendor_qccsyshal_qti file { getattr open read }
+allow mslgd vendor_qccsyshal_qti lnk_file { read }
+allow mslgd vendor_qrtr dir { search }
+allow mslgd vendor_qrtr file { getattr open read }
+allow mslgd vendor_qrtr lnk_file { read }
+allow mslgd vendor_qspmsvc dir { search }
+allow mslgd vendor_qspmsvc file { getattr open read }
+allow mslgd vendor_qspmsvc lnk_file { read }
+allow mslgd vendor_qtelephony dir { search }
+allow mslgd vendor_qtelephony file { getattr open read }
+allow mslgd vendor_qtelephony lnk_file { read }
+allow mslgd vendor_qtidataservices_app dir { search }
+allow mslgd vendor_qtidataservices_app file { getattr open read }
+allow mslgd vendor_qtidataservices_app lnk_file { read }
+allow mslgd vendor_rfs_access dir { search }
+allow mslgd vendor_rfs_access file { getattr open read }
+allow mslgd vendor_rfs_access lnk_file { read }
+allow mslgd vendor_rmt_storage dir { search }
+allow mslgd vendor_rmt_storage file { getattr ioctl lock map open read watch watch_reads }
+allow mslgd vendor_rmt_storage lnk_file { read }
+allow mslgd vendor_sensors dir { search }
+allow mslgd vendor_sensors file { getattr open read }
+allow mslgd vendor_sensors lnk_file { read }
+allow mslgd vendor_sensors_qti dir { search }
+allow mslgd vendor_sensors_qti file { getattr open read }
+allow mslgd vendor_sensors_qti lnk_file { read }
+allow mslgd vendor_shell_exec file { execute getattr map read }
+allow mslgd vendor_ssgtzd dir { search }
+allow mslgd vendor_ssgtzd file { getattr open read }
+allow mslgd vendor_ssgtzd lnk_file { read }
+allow mslgd vendor_subsystem_ramdump dir { search }
+allow mslgd vendor_subsystem_ramdump file { getattr open read }
+allow mslgd vendor_subsystem_ramdump lnk_file { read }
+allow mslgd vendor_time_daemon dir { search }
+allow mslgd vendor_time_daemon file { getattr open read }
+allow mslgd vendor_time_daemon lnk_file { read }
+allow mslgd vendor_timeservice_app dir { search }
+allow mslgd vendor_timeservice_app file { read }
+allow mslgd vendor_timeservice_app lnk_file { read }
+allow mslgd vendor_toolbox_exec file { execute execute_no_trans getattr map open read }
+allow mslgd vendor_vppservice dir { search }
+allow mslgd vendor_vppservice file { getattr open read }
+allow mslgd vendor_vppservice lnk_file { read }
+allow mslgd vendor_wcnss_service dir { search }
+allow mslgd vendor_wcnss_service file { getattr open read }
+allow mslgd vendor_wcnss_service lnk_file { read }
+allow mslgd vendor_wifidisplayhalservice_qti dir { search }
+allow mslgd vendor_wifidisplayhalservice_qti file { getattr open read }
+allow mslgd vendor_wifidisplayhalservice_qti lnk_file { read }
+allow mslgd vendor_wlc_app dir { search }
+allow mslgd vendor_wlc_app file { getattr open read }
+allow mslgd vendor_wlc_app lnk_file { read }
+allow mslgd vndservicemanager dir { search }
+allow mslgd vndservicemanager file { getattr open read }
+allow mslgd vndservicemanager lnk_file { read }
+allow mslgd vold dir { search }
+allow mslgd vold file { getattr open read }
+allow mslgd vold lnk_file { read }
+allow mslgd webview_zygote dir { search }
+allow mslgd webview_zygote file { getattr open read }
+allow mslgd webview_zygote lnk_file { read }
+allow mslgd wificond dir { search }
+allow mslgd wificond file { getattr open read }
+allow mslgd wificond lnk_file { read }
+allow mslgd xiaomimodemdebugservice_app dir { search }
+allow mslgd xiaomimodemdebugservice_app file { getattr open read }
+allow mslgd xiaomimodemdebugservice_app lnk_file { read }
+allow mslgd zygote dir { search }
+allow mslgd zygote file { getattr open read }
+allow mslgd zygote lnk_file { read }
+allow untrusted_app device file { create ioctl map open read unlink write }
+allow untrusted_app device sock_file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write }
+allow untrusted_app init unix_stream_socket { connectto }
+allow untrusted_app media_rw_data_file dir { add_name create getattr ioctl lock open read remove_name rename reparent rmdir search setattr watch watch_reads write }
+allow untrusted_app media_rw_data_file file { append create getattr ioctl lock map open read rename setattr unlink watch watch_reads write }
+allow untrusted_app mnt_media_rw_file dir { search }
+allow untrusted_app mslg_rootfs_file dir { add_name create getattr open read remove_name rmdir search setattr watch write }
+allow untrusted_app mslg_rootfs_file fifo_file { create open read unlink write }
+allow untrusted_app mslg_rootfs_file file { append create getattr ioctl link lock map open read rename setattr unlink watch write }
+allow untrusted_app mslg_rootfs_file lnk_file { getattr read }
+allow untrusted_app mslg_rootfs_file sock_file { create getattr rename setattr unlink write }
+allow untrusted_app mslgd unix_dgram_socket { sendto }
+allow untrusted_app mslgd unix_stream_socket { connectto }
+allow untrusted_app procfs_memory file { open read }
+allow untrusted_app property_socket sock_file { write }
+allow untrusted_app system_prop property_service { set }
+allow untrusted_app tmpfs file { open read }
+allow untrusted_app tmpfs sock_file { create write }
+allow untrusted_app untrusted_app tcp_socket { read write }
+allow untrusted_app vendor_default_prop file { getattr map open read }
+allow untrusted_app vendor_displayfeature_prop file { getattr map open read }
+allow untrusted_app vendor_mslg_prop file { getattr map open read }
+allow vendor_init mslg_rootfs_file dir { add_name create getattr ioctl lock open read remove_name rename reparent rmdir search setattr watch watch_reads write }
+allow vendor_init system_data_file dir { create write }
+allow vendor_init vendor_mslg_prop file { getattr map open read }
+allow vendor_init vendor_mslg_prop property_service { set }
+allow vendor_mslg_prop vendor_mslg_prop process *
+allowxperm mslg_app mslg_app_devpts chr_file ioctl { 0x5401-0x5404 0x540b 0x540e-0x5411 0x5413-0x5414 0x5450-0x5451 }
+allowxperm mslgd loop_device blk_file ioctl { 0x1261 0x4c00-0x4c01 0x4c04-0x4c05 0x4c08-0x4c0a }
+allowxperm mslgd vendor_file file ioctl { 0x5401 }
