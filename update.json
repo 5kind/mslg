@@ -1,6 +1,6 @@
 {
-  "version": "v3.6",
-  "versionCode": 18,
-  "zipUrl": "https://raw.githubusercontent.com/Zackptg5/MMT-Extended/install.zip",
-  "changelog": "https://raw.githubusercontent.com/Zackptg5/MMT-Extended/changelog.md"
+  "version": "v0.1.0",
+  "versionCode": 1,
+  "zipUrl": "https://github.com/5kind/mslg/releases/download/v0.1.0/install.zip",
+  "changelog": "https://raw.githubusercontent.com/5kind/mslg/master/changelog.md"
 }
